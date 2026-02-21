@@ -21,10 +21,9 @@ The system simulates a long-term software maintenance project and thus prioritiz
 
 ### Software
 
-| Software | Version | Download |
-|----------|---------|----------|
-| Java JDK | 17.0.1 or higher | [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/) |
-
+| Software | Version |
+|----------|---------|
+| Java JDK | 17.0.1 or higher |
 Verify installation:
 
 ```
