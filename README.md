@@ -1,18 +1,6 @@
 # Flexible Notification System
 
-A modular notification system built in Java demonstrating the **Strategy Design Pattern** and **Composition over Inheritance**. The system simulates sending notifications through multiple platforms (Email, SMS, WhatsApp) with runtime-swappable delivery methods and session logging.
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Requirements](#requirements)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Architecture](#architecture)
-- [Usage Examples](#usage-examples)
-- [Documentation](#documentation)
-- [Maintenance](#maintenance)
-- [Author](#author)
+A modular notification system built in Java demonstrating the SOLID design principle and Composition over Inheritance. The system simulates sending notifications through multiple platforms (Email, SMS, WhatsApp) with runtime-swappable delivery methods and session logging.
 
 ## Overview
 
@@ -23,15 +11,13 @@ This notification system allows users to:
 - Track all sent messages in a session log
 - Display message history in reverse chronological order
 
-The system prioritizes maintainability and extensibility. New notification services can be added without modifying the core `AlertSystem` class.
+The system simulates a long-term software maintenance project and thus prioritizes maintainability and extensibility. New notification services can be added without modifying the core `AlertSystem` class.
 
 ## Requirements
 
 ### Hardware
 
-- Any system capable of running Java (Windows, macOS, Linux)
-- Minimum 512 MB RAM
-- 50 MB disk space
+- Any modern system capable of running Java
 
 ### Software
 
@@ -46,21 +32,35 @@ java -version
 javac -version
 ```
 
-### Optional
-
-- IntelliJ IDEA (recommended IDE)
-- Git for version control
-
 ## Quick Start
 
 ### 1. Clone or Download
 
 Download and extract the project to your local machine.
 
-### 2. Navigate to Project Root
+/src should contain the apps and services folders. Apps should contain:
 
 ```
-cd /path/to/Week5
+AlertSystem.java
+package-info.java
+```
+
+Services should contain:
+
+```
+EmailService.java
+NotificationMedium.java
+SMSService.java
+WhatsAppService.java
+package-info.java
+```
+
+### 2. Navigate to Project Root
+
+Place the /src folder whereever desired, then run in the terminal:
+
+```
+cd [directory]/src
 ```
 
 ### 3. Compile
@@ -78,32 +78,57 @@ java -cp out apps.AlertSystem
 ### Expected Output
 
 ```
-=== Notification System Demo ===
-
-Switching to EMAIL service.
-[EMAIL] Sending email: LinkedIn Job Alerts
-[EMAIL] Sending email: Amazon Order Confirmation
-[EMAIL] Sending email: Canvas Notification
-
-Switching to SMS service.
-[SMS] Sending text: Verification Code
-[SMS] Sending text: Doctor's Appointment Reminder
-[SMS] Sending text: Mom
-
---- Session Message Log ---
-1. [SMS] Mom
-2. [SMS] Doctor's Appointment Reminder
-3. [SMS] Verification Code
-4. [EMAIL] Canvas Notification
-5. [EMAIL] Amazon Order Confirmation
-6. [EMAIL] LinkedIn Job Alerts
-Total messages: 6
+ * === Notification System Integration Test ===
+ * Testing runtime switching between all mediums.
+ *
+ * --- Test 1: Email Service ---
+ *
+ * Switching to EMAIL service.
+ * [Email] Sending email: LinkedIn Job Alerts
+ * [Email] Sending email: Amazon Order Confirmation
+ * [Email] Sending email: Canvas Notification
+ *
+ * --- Test 2: SMS Service ---
+ *
+ * Switching to SMS service.
+ * [SMS] Sending text: Your verification code is 847291
+ * [SMS] Sending text: Doctor's Appointment Reminder
+ * [SMS] Sending text: Mom
+ *
+ * --- Test 3: WhatsApp Service ---
+ *
+ * Switching to WhatsApp service.
+ * [WhatsApp] Sending message: Hey! Are we still on for tonight?
+ * [WhatsApp] Sending message: Check out this link I found
+ * [WhatsApp] Sending message: Group chat: Meeting moved to 3pm
+ *
+ * --- Test 4: Runtime Switch Back to Email ---
+ *
+ * Switching to EMAIL service.
+ * [Email] Sending email: Invoice #12345 attached
+ *
+ * --- Session Message Log ---
+ * 1. [EMAIL] Invoice #12345 attached
+ * 2. [WhatsApp] Group chat: Meeting moved to 3pm
+ * 3. [WhatsApp] Check out this link I found
+ * 4. [WhatsApp] Hey! Are we still on for tonight?
+ * 5. [SMS] Mom
+ * 6. [SMS] Doctor's Appointment Reminder
+ * 7. [SMS] Your verification code is 847291
+ * 8. [EMAIL] Canvas Notification
+ * 9. [EMAIL] Amazon Order Confirmation
+ * 10. [EMAIL] LinkedIn Job Alerts
+ * Total messages: 10
+ *
+ * === Test Summary ===
+ * All three services successfully integrated.
+ * Runtime switching verified without recompilation.
+ * Message logging works across all mediums.
 ```
 
 ## Project Structure
 
 ```
-Week 5/
 ├── src/
 │   ├── apps/
 │   │   ├── package-info.java
@@ -114,115 +139,12 @@ Week 5/
 │       ├── EmailService.java
 │       ├── SMSService.java
 │       └── WhatsAppService.java
-├── out/                    (compiled classes)
-├── docs/                   (generated documentation)
-└── README.md
-```
-
-## Architecture
-
-The system implements the **Strategy Design Pattern**:
-
-| Component | Role | Description |
-|-----------|------|-------------|
-| `NotificationMedium` | Interface | Contract for all delivery services |
-| `EmailService` | Concrete Strategy | Handles email delivery |
-| `SMSService` | Concrete Strategy | Handles SMS delivery |
-| `WhatsAppService` | Concrete Strategy | Handles WhatsApp delivery |
-| `AlertSystem` | Context | Manages medium selection and message logging |
-
-### Design Principles
-
-- **Composition over Inheritance:** `AlertSystem` holds a `NotificationMedium` reference rather than extending a service class.
-- **Open/Closed Principle:** System is open for extension (new services) but closed for modification (no changes to `AlertSystem`).
-- **Encapsulation:** Services are organized in a separate package with single responsibilities.
-
-## Usage Examples
-
-### Basic Usage
-
-```java
-AlertSystem alerts = new AlertSystem();
-
-alerts.setMedium(new EmailService());
-alerts.notifyUser("Welcome to the platform!");
-
-alerts.setMedium(new SMSService());
-alerts.notifyUser("Your code is 123456");
-
-alerts.setMedium(new WhatsAppService());
-alerts.notifyUser("Meeting at 3pm");
-
-alerts.displayLog();
-```
-
-### Runtime Switching
-
-```java
-AlertSystem alerts = new AlertSystem();
-NotificationMedium currentMedium;
-
-// Switch based on user preference
-String userChoice = "whatsapp";
-
-switch (userChoice) {
-    case "email":
-        currentMedium = new EmailService();
-        break;
-    case "sms":
-        currentMedium = new SMSService();
-        break;
-    case "whatsapp":
-        currentMedium = new WhatsAppService();
-        break;
-}
-
-alerts.setMedium(currentMedium);
-alerts.notifyUser("Dynamic notification!");
 ```
 
 ## Documentation
 
-Generate JavaDoc HTML documentation:
+Generate JavaDoc HTML documentation by navigating to the /src directory and running in the terminal:
 
 ```
 javadoc -d docs -author -version src/apps/*.java src/services/*.java
 ```
-
-Open `docs/index.html` in a browser to view.
-
-## Maintenance
-
-### Adding a New Notification Service
-
-1. Create a new class in `src/services/`:
-
-```java
-package services;
-
-public class SlackService implements NotificationMedium {
-    
-    @Override
-    public void send(String message) {
-        System.out.println("[Slack] Sending message: " + message);
-    }
-    
-    @Override
-    public String toString() {
-        return "Slack";
-    }
-}
-```
-
-2. Use it immediately — no changes to `AlertSystem` required:
-
-```java
-alerts.setMedium(new SlackService());
-alerts.notifyUser("Hello from Slack!");
-```
-
-## Author
-
-**Miguel Pinpin**  
-CSC6301 — Object-Oriented Programming  
-Week 5 Assignment
