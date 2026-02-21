@@ -25,7 +25,7 @@ The system simulates a long-term software maintenance project and thus prioritiz
 |----------|---------|
 | Java JDK | 17.0.1 or higher |
 
-Verify installation:
+Verify installation by running in the terminal:
 
 ```
 java -version
