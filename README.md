@@ -1,4 +1,4 @@
-# Flexible Notification System
+# CSC6301-Project-5
 
 A modular notification system built in Java demonstrating SOLID and composition design principles. The system simulates sending notifications through multiple platforms (Email, SMS, WhatsApp) with runtime-swappable delivery methods and session logging.
 
