@@ -1,6 +1,6 @@
 # Flexible Notification System
 
-A modular notification system built in Java demonstrating the SOLID design principle and Composition over Inheritance. The system simulates sending notifications through multiple platforms (Email, SMS, WhatsApp) with runtime-swappable delivery methods and session logging.
+A modular notification system built in Java demonstrating SOLID and composition design principles. The system simulates sending notifications through multiple platforms (Email, SMS, WhatsApp) with runtime-swappable delivery methods and session logging.
 
 ## Overview
 
@@ -15,10 +15,6 @@ The system simulates a long-term software maintenance project and thus prioritiz
 
 ## Requirements
 
-### Hardware
-
-- Any modern system capable of running Java
-
 ### Software
 
 | Software | Version |
@@ -32,7 +28,11 @@ java -version
 javac -version
 ```
 
-No dependencies required as well.
+No dependencies on external libraries required as well.
+
+### Hardware
+
+- Any modern system capable of running Java
 
 ## Quick Start
 
