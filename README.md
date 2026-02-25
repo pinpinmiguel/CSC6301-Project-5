@@ -84,52 +84,52 @@ java -cp out apps.AlertSystem
 ### Expected Output
 
 ```
- * === Notification System Integration Test ===
- * Testing runtime switching between all mediums.
+=== Notification System Integration Test ===
+Testing runtime switching between all mediums.
  *
- * --- Test 1: Email Service ---
- *
- * Switching to EMAIL service.
- * [Email] Sending email: LinkedIn Job Alerts
- * [Email] Sending email: Amazon Order Confirmation
- * [Email] Sending email: Canvas Notification
- *
- * --- Test 2: SMS Service ---
- *
- * Switching to SMS service.
- * [SMS] Sending text: Your verification code is 847291
- * [SMS] Sending text: Doctor's Appointment Reminder
- * [SMS] Sending text: Mom
- *
- * --- Test 3: WhatsApp Service ---
- *
- * Switching to WhatsApp service.
- * [WhatsApp] Sending message: Hey! Are we still on for tonight?
- * [WhatsApp] Sending message: Check out this link I found
- * [WhatsApp] Sending message: Group chat: Meeting moved to 3pm
- *
- * --- Test 4: Runtime Switch Back to Email ---
- *
- * Switching to EMAIL service.
- * [Email] Sending email: Invoice #12345 attached
- *
- * --- Session Message Log ---
- * 1. [EMAIL] Invoice #12345 attached
- * 2. [WhatsApp] Group chat: Meeting moved to 3pm
- * 3. [WhatsApp] Check out this link I found
- * 4. [WhatsApp] Hey! Are we still on for tonight?
- * 5. [SMS] Mom
- * 6. [SMS] Doctor's Appointment Reminder
- * 7. [SMS] Your verification code is 847291
- * 8. [EMAIL] Canvas Notification
- * 9. [EMAIL] Amazon Order Confirmation
- * 10. [EMAIL] LinkedIn Job Alerts
- * Total messages: 10
- *
- * === Test Summary ===
- * All three services successfully integrated.
- * Runtime switching verified without recompilation.
- * Message logging works across all mediums.
+--- Test 1: Email Service ---
+
+Switching to EMAIL service.
+[Email] Sending email: LinkedIn Job Alerts
+[Email] Sending email: Amazon Order Confirmation
+[Email] Sending email: Canvas Notification
+
+--- Test 2: SMS Service ---
+
+Switching to SMS service.
+[SMS] Sending text: Your verification code is 847291
+[SMS] Sending text: Doctor's Appointment Reminder
+[SMS] Sending text: Mom
+
+--- Test 3: WhatsApp Service ---
+
+Switching to WhatsApp service.
+[WhatsApp] Sending message: Hey! Are we still on for tonight?
+[WhatsApp] Sending message: Check out this link I found
+[WhatsApp] Sending message: Group chat: Meeting moved to 3pm
+
+--- Test 4: Runtime Switch Back to Email ---
+
+Switching to EMAIL service.
+[Email] Sending email: Invoice #12345 attached
+
+--- Session Message Log ---
+1. [EMAIL] Invoice #12345 attached
+2. [WhatsApp] Group chat: Meeting moved to 3pm
+3. [WhatsApp] Check out this link I found
+4. [WhatsApp] Hey! Are we still on for tonight?
+5. [SMS] Mom
+6. [SMS] Doctor's Appointment Reminder
+7. [SMS] Your verification code is 847291
+8. [EMAIL] Canvas Notification
+9. [EMAIL] Amazon Order Confirmation
+10. [EMAIL] LinkedIn Job Alerts
+Total messages: 10
+
+=== Test Summary ===
+All three services successfully integrated.
+Runtime switching verified without recompilation.
+Message logging works across all mediums.
 ```
 If output is not as expected, build health is compromised.
 
