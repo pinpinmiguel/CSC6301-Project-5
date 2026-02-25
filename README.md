@@ -32,6 +32,8 @@ java -version
 javac -version
 ```
 
+No dependencies required as well.
+
 ## Quick Start
 
 ### 1. Clone or Download
@@ -125,6 +127,7 @@ java -cp out apps.AlertSystem
  * Runtime switching verified without recompilation.
  * Message logging works across all mediums.
 ```
+If output is not as expected, build health is compromised.
 
 ## Project Structure
 
