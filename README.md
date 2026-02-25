@@ -65,13 +65,17 @@ Place the /src folder whereever desired, then run in the terminal:
 cd [directory]/src
 ```
 
-### 3. Compile
+### 3. Compile the java files
+
+While in the project directory, run in the terminal:
 
 ```
 javac -d out src/apps/*.java src/services/*.java
 ```
 
-### 4. Run
+### 4. Run the AlertSystem.class file
+
+While in the same directory, run:
 
 ```
 java -cp out apps.AlertSystem
@@ -151,3 +155,4 @@ Generate JavaDoc HTML documentation by navigating to the /src directory and runn
 ```
 javadoc -d docs -author -version src/apps/*.java src/services/*.java
 ```
+This command will generate the documentation for the program in a /docs folder in the directory of the files.
