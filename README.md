@@ -86,7 +86,7 @@ java -cp out apps.AlertSystem
 ```
 === Notification System Integration Test ===
 Testing runtime switching between all mediums.
- *
+
 --- Test 1: Email Service ---
 
 Switching to EMAIL service.
